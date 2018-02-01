@@ -1,0 +1,12 @@
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\bin\Debug\SEUTCV2.exe.config
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\bin\Debug\SEUTCV2.exe
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\bin\Debug\SEUTCV2.pdb
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.FrmPanelAlumnos.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Properties.Resources.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Views.FrmGrupos.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Views.Grupos.FrmProfesoresPorGrupo.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Views.Main.FrmPrincipal.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.csproj.GenerateResource.Cache
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.exe
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.pdb
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.csprojResolveAssemblyReference.cache

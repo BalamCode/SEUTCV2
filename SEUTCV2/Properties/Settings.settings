@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SEUTCV2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="servidor" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
+    <Setting Name="puerto" Type="System.UInt32" Scope="User">
+      <Value Profile="(Default)">3309</Value>
+    </Setting>
+    <Setting Name="usuario" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">admin</Value>
+    </Setting>
+    <Setting Name="bd" Type="System.String" Scope="User">
+      <Value Profile="(Default)">seutc</Value>
+    </Setting>
+    <Setting Name="periodo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2017C</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
