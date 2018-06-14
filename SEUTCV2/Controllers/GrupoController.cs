@@ -14,7 +14,7 @@ namespace SEUTCV2.Controllers
 {
     class GrupoController
     {
-         FrameBD Grupoconex = new FrameBD();
+         
          ModelGrupo Grupo = new ModelGrupo();
 
 
@@ -26,8 +26,8 @@ namespace SEUTCV2.Controllers
             sql = "SELECT ClaveGrupo as Clave,Grado,Grupo,FechaCreacion as Creado" +
                              " FROM Grupos WHERE periodo='" + Settings.Default.periodo + "'";
             
-            return Grupoconex.SQLSEL(sql); 
-
+            return FrameBD.SQLSEL(sql); 
+            
             
         }
 
@@ -39,7 +39,7 @@ namespace SEUTCV2.Controllers
             sql = "SELECT ClaveGrupo" +
            " FROM Grupos WHERE periodo='" + Settings.Default.periodo + "' ORDER By ClaveGrupo ASC";
 
-            cmb.DataSource = Grupoconex.SQLCOMBO(sql);
+            cmb.DataSource = FrameBD.SQLCOMBO(sql);
             cmb.ValueMember = "ClaveGrupo";
             cmb.DisplayMember = "ClaveGrupo";
 
@@ -53,7 +53,7 @@ namespace SEUTCV2.Controllers
             sql = "SELECT ClaveGrupo" +
            " FROM Grupos WHERE periodo='" + Settings.Default.periodo + "' AND IdCarrera='" + idcarrera + "' ORDER By ClaveGrupo ASC";
 
-            cmb.DataSource = Grupoconex.SQLCOMBO(sql);
+            cmb.DataSource = FrameBD.SQLCOMBO(sql);
             cmb.ValueMember = "ClaveGrupo";
             cmb.DisplayMember = "ClaveGrupo";
 
@@ -71,7 +71,7 @@ namespace SEUTCV2.Controllers
                 sql = "SELECT ClaveGrupo as Clave,Grado,Grupo,FechaCreacion as Creado" +
                                  " FROM Grupos " +
                                  " WHERE idCarrera ='" + idcarrera + "' AND periodo='" + Settings.Default.periodo + "'";
-                return Grupoconex.SQLSEL(sql);
+                return FrameBD.SQLSEL(sql);
         
 
             
@@ -98,13 +98,13 @@ namespace SEUTCV2.Controllers
             String ComandoSQL = string.Format("INSERT INTO Grupos (clavegrupo,periodo,idcarrera,grado,grupo,cupo,claveplan,fechacreacion)" +
                                               " VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", grup.clavegrupo, grup.periodo, grup.idcarrera, grup.grado, grup.grupo, grup.cupo, grup.claveplan, grup.fechacreacion);
 
-            Grupoconex.SQLIDU(ComandoSQL);
+            FrameBD.SQLIDU(ComandoSQL);
 
 
 
 
             string[] asignaturas;
-            asignaturas = Grupoconex.ObtieneCampo("asignaturas", "idcarrera='" + grup.idcarrera + "' AND cuatrimestre=" + grup.grado, "ClaveAsig");
+            asignaturas = FrameBD.ObtieneCampo("asignaturas", "idcarrera='" + grup.idcarrera + "' AND cuatrimestre=" + grup.grado, "ClaveAsig");
 
 
 
@@ -114,7 +114,7 @@ namespace SEUTCV2.Controllers
                 string sqlasigs = "INSERT INTO docentesporgrupo(periodo,claveasig,cedula,clavegrupo)" +
                                  " VALUES('" + SEUTCV2.Properties.Settings.Default.periodo + "','" +
                                  asignaturas[i] + "','01','" + grup.clavegrupo + "')";
-                Grupoconex.SQLIDU(sqlasigs);
+                FrameBD.SQLIDU(sqlasigs);
             }
                 
         }
@@ -122,7 +122,7 @@ namespace SEUTCV2.Controllers
         public void Destroy(string id) 
         {
             string sqldes = "DELETE FROM Grupos WHERE clavegrupo='" + id + "'";
-            Grupoconex.SQLIDU(sqldes);
+            FrameBD.SQLIDU(sqldes);
 
 
         }
@@ -131,7 +131,7 @@ namespace SEUTCV2.Controllers
         {
             string sqldatos = "Select ClaveAsig as Clave,Nombre as Asignatura FROM Asignaturas" +
                              " WHERE idCarrera='" + idcarrera + "' AND Cuatrimestre=" + idgrado;
-            dtg.DataSource = Grupoconex.SQLSEL(sqldatos);
+            dtg.DataSource = FrameBD.SQLSEL(sqldatos);
             dtg.DataMember = "datos";
                     
         }
@@ -142,7 +142,7 @@ namespace SEUTCV2.Controllers
             string sqldatos = "Select Asig.ClaveAsig as Clave,Asig.Nombre as Asignatura,Doc.Cedula" +
                               " FROM Asignaturas as Asig INNER JOIN docentesporgrupo as Doc ON Asig.ClaveAsig=Doc.ClaveAsig" +
                              " WHERE Asig.idCarrera='" + idcarrera + "' AND Asig.Cuatrimestre=" + idgrado;
-            dtg.DataSource = Grupoconex.SQLSEL(sqldatos);
+            dtg.DataSource = FrameBD.SQLSEL(sqldatos);
             dtg.DataMember = "datos";
 
         }

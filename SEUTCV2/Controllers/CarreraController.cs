@@ -11,14 +11,14 @@ namespace SEUTCV2.Controllers
     class CarreraController
     {
 
-        FrameBD Carrera = new FrameBD();
+        
 
 
         public DataTable GetCarreras()
         {
 
             string sql = "SELECT idCarrera,Nombre FROM Carreras";
-            return Carrera.SQLCOMBO(sql);
+            return FrameBD.SQLCOMBO(sql);
 
 
         }

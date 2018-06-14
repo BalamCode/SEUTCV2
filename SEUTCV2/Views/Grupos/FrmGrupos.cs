@@ -15,14 +15,17 @@ namespace SEUTCV2.Views
 {
     public partial class FrmGrupos : Form
     {
+
         
         GrupoController ConGrupo = new GrupoController();
         ModelGrupo MGrupo = new ModelGrupo();
         CarreraController Carrera = new CarreraController();
-        ModelProfesor Profe = new ModelProfesor();
+        //ModelProfesor Profe = new ModelProfesor();
         public FrmGrupos()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
         }
 
         private void FrmGrupos_Load(object sender, EventArgs e)
@@ -30,7 +33,8 @@ namespace SEUTCV2.Views
         {
            //IPAddress ip = Dns.GetHostAddresses(Dns.GetHostName()).Where(address => address.AddressFamily == AddressFamily.InterNetwork).First();
             //System.Net.NetworkInformation.NetworkInterface.GetAllNetworkInterfaces();
-
+            this.Top = 0;
+            this.Left = 0;
         
             CmbCarreras.SelectedIndex = -1;
             CmbCarreras.DataSource= Carrera.GetCarreras();

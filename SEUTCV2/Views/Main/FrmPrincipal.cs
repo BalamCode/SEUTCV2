@@ -31,5 +31,10 @@ namespace SEUTCV2.Views.Main
             Asignar.MdiParent = this;
             Asignar.Show();
         }
+
+        private void panelDeProfesoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

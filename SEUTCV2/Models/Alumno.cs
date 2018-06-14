@@ -16,7 +16,7 @@ namespace SEUTCV2.Models
 
         public void ListaAlumnos (DataGridView dgv,string filtro)
         {
-            dgv.DataSource = Alumnos.SQLSEL("SELECT Matricula,concat(ApellidoP,' ',ApellidoM,' ',Nombre)as Alumno from Alumnos WHERE ApellidoP LIKE '" + filtro + "%' OR NOMBRE Like '" + filtro + "%'");
+            dgv.DataSource = FrameBD.SQLSEL("SELECT Matricula,concat(ApellidoP,' ',ApellidoM,' ',Nombre)as Alumno from Alumnos WHERE ApellidoP LIKE '" + filtro + "%' OR NOMBRE Like '" + filtro + "%'");
             dgv.DataMember = "datos";
         }
 

@@ -16,7 +16,7 @@ namespace SEUTCV2
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Views.Main.FrmPrincipal());
+            Application.Run(new Views.Main.FrmPrincipal() );
         }
     }
 }

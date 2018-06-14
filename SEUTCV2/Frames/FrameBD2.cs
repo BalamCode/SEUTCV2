@@ -11,31 +11,31 @@ using System.Windows.Forms;
 namespace AccesoADatos
 {
    
-  public  class FrameBD
+  class FrameBD
     {
         //string ser;
         //string por;
         //string pas;
         //string use;
         //string db;
-        public static MySqlConnection conex = new MySqlConnection();
+        MySqlConnection conex = new MySqlConnection();
        
-        public static string servidor;
-        public static uint puerto;
-        public static string usuario;
-        public static string password;
-        public static string bd;
+        private string servidor;
+        private uint puerto;
+        private string usuario;
+        private string password;
+        private string bd;
 
 
       //public FrameBD(string servidor, uint puerto, string usuario, string password, string bd)
-        static FrameBD()
+        public FrameBD()
         {
             // TODO: Complete member initialization
-           servidor = Settings.Default.servidor;
-            puerto = Settings.Default.puerto;
-            usuario = Settings.Default.usuario;
-            password = Settings.Default.pass;
-            bd = Settings.Default.bd;
+            this.servidor = Settings.Default.servidor;
+            this.puerto = Settings.Default.puerto;
+            this.usuario = Settings.Default.usuario;
+            this.password = Settings.Default.pass;
+            this.bd = Settings.Default.bd;
 
 
             conex.Close();
@@ -55,7 +55,7 @@ namespace AccesoADatos
             
         }
          
-      public static void conectar() 
+      public void conectar() 
         {
             conex.Close(); 
             conex.Open(); 
@@ -63,7 +63,7 @@ namespace AccesoADatos
         }
 
 
-      public static  DataSet SQLSEL(string sql)
+      public  DataSet SQLSEL(string sql)
       {
           conectar();
 
@@ -77,7 +77,7 @@ namespace AccesoADatos
 
       //TRABAJA CON COMBOBOX
 
-      public static DataTable SQLCOMBO(string sql) 
+      public DataTable SQLCOMBO(string sql) 
       {
           conectar();
           MySqlDataAdapter Adap = new MySqlDataAdapter(sql,conex);
@@ -89,7 +89,7 @@ namespace AccesoADatos
 
       //Permite ejecutar comandos INSERT, DELETE Y UPDATE
       // De ahi deriva el IDU
-      public static void SQLIDU(string sql) 
+      public void SQLIDU(string sql) 
       {
            
           try
@@ -115,7 +115,7 @@ namespace AccesoADatos
           
       }
 
-      public static MySqlDataReader SQLReader(string sql) 
+      public MySqlDataReader SQLReader(string sql) 
       {
           conectar();
           MySqlCommand comando = new MySqlCommand(sql, conex);
@@ -126,7 +126,7 @@ namespace AccesoADatos
 
       }
 
-      public static string[] ObtieneCampo(string tabla,string condicion,string campo) 
+      public string[] ObtieneCampo(string tabla,string condicion,string campo) 
       {
           
           string sqlaux = "SELECT " + campo +
@@ -180,5 +180,5 @@ namespace AccesoADatos
 
 
 
-    
+
 }

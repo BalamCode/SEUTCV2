@@ -97,7 +97,7 @@ namespace SEUTCV2.Views.Grupos
 
             try
             {
-                LlenaMaterias();
+                LlenaGrupos();
             }
             catch { }
             
@@ -111,14 +111,14 @@ namespace SEUTCV2.Views.Grupos
         private void CmbGrupos_SelectionChangeCommitted(object sender, EventArgs e)
         {
 
-            LlenaMaterias();
+            LlenaGrupos();
         }
 
         private void listarasigs()
         {
             string auxgrado = Convert.ToString(CmbGrupos.SelectedValue);
             string grado = auxgrado.Substring(4, 1);
-
+            dataGridView1.Columns.Clear();
             CGrup.GetMateriasYProfes(Convert.ToString(CmbCarreras.SelectedValue), grado, dataGridView1);
         }
 
@@ -127,10 +127,11 @@ namespace SEUTCV2.Views.Grupos
             //listarasigs();
         }
 
-        private void LlenaMaterias() 
+        private void LlenaGrupos() 
         {
 
-            dataGridView1.Columns.Clear();
+            //dataGridView1.Columns.Clear();
+            
             CGrup.GetGrupos(CmbGrupos, Convert.ToString(CmbCarreras.SelectedValue));
             listarasigs();
             AddCombo();

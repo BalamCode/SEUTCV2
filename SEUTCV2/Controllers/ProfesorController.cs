@@ -14,7 +14,7 @@ namespace SEUTCV2.Controllers
     class ProfesorController
 
     {
-        FrameBD FrameSQL = new FrameBD();
+        
         ModelProfesor ClaseProfesor = new ModelProfesor();
 
        
@@ -26,7 +26,7 @@ namespace SEUTCV2.Controllers
                      OProfe.cedula, OProfe.nombre, OProfe.apellidop, OProfe.nombre, OProfe.nivel);
 
 
-            FrameSQL.SQLIDU(ComandoSQL);
+            FrameBD.SQLIDU(ComandoSQL);
 
         }
 
@@ -37,7 +37,7 @@ namespace SEUTCV2.Controllers
                                " FROM Profesores " +
                                " WHERE Activo=1" + 
                                " ORDER By ApellidoP ASC";
-            x = FrameSQL.SQLCOMBO(sqlprofes);
+            x = FrameBD.SQLCOMBO(sqlprofes);
             return x;
 
         }

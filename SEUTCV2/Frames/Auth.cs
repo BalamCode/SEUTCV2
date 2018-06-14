@@ -23,7 +23,7 @@ namespace Autentica
         private string NivelUsuarioAccede;
              
 
-        FrameBD TablaUser = new FrameBD();
+        
         
         //Constructor de la clase
         public Auth(string tabla, string campousuario, string campopass,string valoruser,string valorpass)
@@ -43,7 +43,7 @@ namespace Autentica
                               " FROM " + tabla + 
                               " WHERE " + campousuario + "='" + valoruser + "'";
 
-            MySqlDataReader Drus = TablaUser.SQLReader(GetDatos);
+            MySqlDataReader Drus = FrameBD.SQLReader(GetDatos);
 
 
         if (Drus.HasRows== true)
