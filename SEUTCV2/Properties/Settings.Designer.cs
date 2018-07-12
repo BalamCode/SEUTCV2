@@ -85,7 +85,7 @@ namespace SEUTCV2.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2017C")]
+        [global::System.Configuration.DefaultSettingValueAttribute("2018B")]
         public string periodo {
             get {
                 return ((string)(this["periodo"]));

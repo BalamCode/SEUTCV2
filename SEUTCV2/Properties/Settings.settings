@@ -18,7 +18,7 @@
       <Value Profile="(Default)">seutc</Value>
     </Setting>
     <Setting Name="periodo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">2017C</Value>
+      <Value Profile="(Default)">2018B</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -42,6 +42,19 @@ namespace SEUTCV2.Controllers
 
         }
 
+        public void GetProfesores(ComboBox cmb)
+        {
+            //DataTable x = new DataTable();
+            string sqlprofes = "SELECT cedula,concat(ApellidoP,' ',ApellidoM,' ',Nombre) as Docente" +
+                               " FROM Profesores " +
+                               " WHERE Activo=1" +
+                               " ORDER By ApellidoP ASC";
+            cmb.DataSource= FrameBD.SQLCOMBO(sqlprofes);
+            cmb.ValueMember = "cedula";
+            cmb.DisplayMember = "docente";
+        }
+
+
 
     }
 }

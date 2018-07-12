@@ -161,15 +161,15 @@ namespace SEUTCV2.Views
             {
                 if (TxtClave.Text != "")
                 {
-                    MGrupo.clavegrupo = TxtClave.Text;
-                    MGrupo.periodo = SEUTCV2.Properties.Settings.Default.periodo;
-                    MGrupo.idcarrera = Convert.ToString(CmbCarrera.SelectedValue);
-                    MGrupo.grado = Convert.ToUInt32(CmbGrado.SelectedItem);
-                    MGrupo.grupo = Convert.ToString(CmbGrup.SelectedItem);
-                    MGrupo.cupo = 0;
-                    MGrupo.fechacreacion = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                     
+                    //MGrupo.periodo = SEUTCV2.Properties.Settings.Default.periodo;
+                    //MGrupo.idcarrera = Convert.ToString(CmbCarrera.SelectedValue);
+                    //MGrupo.grado = Convert.ToUInt32(CmbGrado.SelectedItem);
+                    //MGrupo.grupo = Convert.ToString(CmbGrup.SelectedItem);
+                    //MGrupo.cupo = 0;
+                    //MGrupo.fechacreacion = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
-                    ConGrupo.StoreGrupos(MGrupo);
+                    ConGrupo.StoreGrupos(TxtClave.Text, ModelPeriodo.periodo, Convert.ToString(CmbCarrera.SelectedValue), Convert.ToString(CmbGrado.SelectedItem), Convert.ToString(CmbGrup.SelectedItem),"0","2015",DateTime.Now.Date.ToString("yyyy-MM-dd"));
                     this.FiltroGrupos();
                     tabControl1.SelectedIndex = 0;
                     BtnGuardar.Enabled = false;

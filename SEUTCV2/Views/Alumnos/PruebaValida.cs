@@ -26,7 +26,8 @@ namespace SEUTCV2.Views.Alumnos
             //e.KeyChar = Validaciones.valida("T", e.KeyChar);
             //e.KeyChar = Validaciones.validaReal(textBox1, e.KeyChar);
             e.KeyChar = Validaciones.validaCorreo(textBox1, e.KeyChar);
-            
+
+            //e.KeyChar = Validaciones.validaReal(textBox1, e.KeyChar);
             
         }
 

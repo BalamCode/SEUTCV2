@@ -15,7 +15,7 @@ namespace SEUTCV2.Controllers
     class GrupoController
     {
          
-         ModelGrupo Grupo = new ModelGrupo();
+        // ModelGrupo Grupo = new ModelGrupo();
 
 
         //Obtiene todos los grupos
@@ -42,6 +42,8 @@ namespace SEUTCV2.Controllers
             cmb.DataSource = FrameBD.SQLCOMBO(sql);
             cmb.ValueMember = "ClaveGrupo";
             cmb.DisplayMember = "ClaveGrupo";
+            cmb.SelectedIndex = 0;
+            //MessageBox.Show(cmb.SelectedValue.ToString());
 
 
         }
@@ -50,12 +52,13 @@ namespace SEUTCV2.Controllers
         {
             string sql = "";
 
-            sql = "SELECT ClaveGrupo" +
+            sql = "SELECT ClaveGrupo,idTutor" +
            " FROM Grupos WHERE periodo='" + Settings.Default.periodo + "' AND IdCarrera='" + idcarrera + "' ORDER By ClaveGrupo ASC";
 
             cmb.DataSource = FrameBD.SQLCOMBO(sql);
             cmb.ValueMember = "ClaveGrupo";
             cmb.DisplayMember = "ClaveGrupo";
+            
 
 
         }
@@ -79,7 +82,7 @@ namespace SEUTCV2.Controllers
 
        
 
-        public void StoreGrupos(ModelGrupo grup)
+        public void StoreGrupos(string clavegrupo, string periodo,string idcarrera,string grado,string grupo,string cupo,string claveplan,string fechacreacion)
         {
             //Type m_tipo = null;
             //PropertyInfo[] m_propiedades = null;
@@ -96,7 +99,9 @@ namespace SEUTCV2.Controllers
 
 
             String ComandoSQL = string.Format("INSERT INTO Grupos (clavegrupo,periodo,idcarrera,grado,grupo,cupo,claveplan,fechacreacion)" +
-                                              " VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')", grup.clavegrupo, grup.periodo, grup.idcarrera, grup.grado, grup.grupo, grup.cupo, grup.claveplan, grup.fechacreacion);
+                                              " VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                                              clavegrupo,periodo, idcarrera, grado, grupo, cupo, claveplan, fechacreacion);
+
 
             FrameBD.SQLIDU(ComandoSQL);
 
@@ -104,18 +109,38 @@ namespace SEUTCV2.Controllers
 
 
             string[] asignaturas;
-            asignaturas = FrameBD.ObtieneCampo("asignaturas", "idcarrera='" + grup.idcarrera + "' AND cuatrimestre=" + grup.grado, "ClaveAsig");
+            asignaturas = FrameBD.ObtieneCampo("asignaturas", "idcarrera='" + idcarrera + "' AND cuatrimestre=" + grado, "ClaveAsig");
 
 
-
-            
-            for (int i = 0; i < asignaturas.Length; i++)
+            if (asignaturas.Length > 1)
             {
-                string sqlasigs = "INSERT INTO docentesporgrupo(periodo,claveasig,cedula,clavegrupo)" +
-                                 " VALUES('" + SEUTCV2.Properties.Settings.Default.periodo + "','" +
-                                 asignaturas[i] + "','01','" + grup.clavegrupo + "')";
+                string sqlasigs = "INSERT INTO docentesporgrupo(periodo,claveasig,cedula,clavegrupo) VALUES";
+                for (int i = 0; i < asignaturas.Length; i++)
+                {
+                    if (i < (asignaturas.Length - 1))
+                    {
+                        sqlasigs = sqlasigs +
+                        " ('" + SEUTCV2.Properties.Settings.Default.periodo + "','" +
+                        asignaturas[i] + "','01','" + clavegrupo + "'),";
+
+                    }
+                    else
+                    {
+                        sqlasigs = sqlasigs +
+                        " ('" + SEUTCV2.Properties.Settings.Default.periodo + "','" +
+                        asignaturas[i] + "','01','" + clavegrupo + "');";
+
+
+                    }
+                    
+
+
+                }
+
                 FrameBD.SQLIDU(sqlasigs);
             }
+            else
+                MessageBox.Show("No hay asignaturas para carrera y grado seleccionado");
                 
         }
 
@@ -136,16 +161,97 @@ namespace SEUTCV2.Controllers
                     
         }
 
-
-        public void GetMateriasYProfes(string idcarrera, string idgrado, DataGridView dtg)
+        public void ObtenerMaterias(string periodo, string grupo, ComboBox dtg)
         {
-            string sqldatos = "Select Asig.ClaveAsig as Clave,Asig.Nombre as Asignatura,Doc.Cedula" +
-                              " FROM Asignaturas as Asig INNER JOIN docentesporgrupo as Doc ON Asig.ClaveAsig=Doc.ClaveAsig" +
-                             " WHERE Asig.idCarrera='" + idcarrera + "' AND Asig.Cuatrimestre=" + idgrado;
-            dtg.DataSource = FrameBD.SQLSEL(sqldatos);
-            dtg.DataMember = "datos";
+            string sqldatos = "Select Asig.ClaveAsig as Clave,Asig.Nombre as Asignatura" +
+                              " FROM Asignaturas as Asig  INNER JOIN docentesporgrupo as Doc ON Asig.ClaveAsig=Doc.ClaveAsig" +
+                              " WHERE Doc.periodo='" + periodo + "' AND Doc.ClaveGrupo='" + grupo + "'";
+            dtg.DataSource = FrameBD.SQLCOMBO(sqldatos);
+            dtg.DisplayMember = "Asignatura";
+            dtg.ValueMember = "Clave";
 
         }
+
+
+        public void GetMateriasYProfes(ComboBox cmb, DataGridView dtg)
+        {
+
+            dtg.Columns.Clear();
+            if (cmb.Items.Count > 0)
+            {
+                string sqldatos = "Select Asig.ClaveAsig as Clave,Asig.Nombre as Asignatura,Doc.Cedula" +
+                                  " FROM Asignaturas as Asig INNER JOIN docentesporgrupo as Doc ON Asig.ClaveAsig=Doc.ClaveAsig" +
+                                 " WHERE Doc.clavegrupo='" + cmb.SelectedValue.ToString() + "'";
+                //dtg.DataSource = FrameBD.SQLSEL(sqldatos);
+                //dtg.DataMember = "datos";
+
+
+
+                DataGridViewComboBoxColumn cmbdgv = new DataGridViewComboBoxColumn();
+                //List<String> itemCodeList = new List<String>();
+                //Cprofe.GetProfesores(cmbdgv);
+                SEUTCV2.Controllers.ProfesorController oProfe = new SEUTCV2.Controllers.ProfesorController();
+                cmbdgv.DataSource = oProfe.GetProfesores();
+                cmbdgv.ValueMember = "cedula";
+                cmbdgv.DisplayMember = "Docente";
+                cmbdgv.HeaderText = "Profesores";
+                cmbdgv.Name = "Profesores";
+                cmbdgv.Width = 300;
+                cmbdgv.DataPropertyName = "Cedula";
+                //cmbdgv.Items.Add("Gilberto");
+                //cmbdgv.Items.Add("Ivan");
+                dtg.Columns.Add(cmbdgv);
+
+                // dtg.Columns["Cedula"].Visible = true;
+
+                dtg.DataSource = FrameBD.SQLSEL(sqldatos);
+                dtg.DataMember = "datos";
+                dtg.Columns["Profesores"].DisplayIndex = 2;
+                dtg.Columns["Asignatura"].Width = 300;
+                
+            }
+           
+
+
+
+
+
+
+        }
+
+        public void AsignarTutor(string cedula, string grupo) 
+        {
+            FrameBD.SQLIDU("UPDATE grupos SET idTutor='" + cedula + "'" + "WHERE clavegrupo='" + grupo + "'");
+
+        }
+
+        public string ObtenerTutor(string grupo) 
+        {
+            string[] res = FrameBD.ObtieneCampo("grupos", "clavegrupo='" + grupo + "'", "idtutor");
+            if (res.Length > 0)
+                return res[0];
+            else
+                return "";
+        }
+
+        public void GuardarProfesMat(string[] materias, string[] profesores, string periodo, string clavegrupo) 
+        {
+            String ComandoSQL="";
+            for (int i=0; i < materias.Length; i++)
+            {
+
+                ComandoSQL = ComandoSQL + "UPDATE docentesporgrupo SET cedula='" + profesores[i] + "' WHERE ClaveAsig='" + materias[i] + "' AND Periodo='" +
+                            periodo + "' AND clavegrupo='" + clavegrupo + "';";
+                
+                                              
+            }
+
+            FrameBD.SQLIDU(ComandoSQL);
+
+
+        }
+
+        
 
 
 

@@ -76,16 +76,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccesoController.cs" />
+    <Compile Include="Controllers\ActasEntregaController.cs" />
+    <Compile Include="Controllers\AlumnosController.cs" />
     <Compile Include="Controllers\CarreraController.cs" />
+    <Compile Include="Controllers\ExportExcel.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
+    <Compile Include="Controllers\JustificacionesController.cs" />
+    <Compile Include="Controllers\MotivosController.cs" />
+    <Compile Include="Controllers\Ponderaciones.cs" />
+    <Compile Include="Controllers\PonderacionesController.cs" />
     <Compile Include="Controllers\ProfesorController.cs" />
+    <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Frames\Auth.cs" />
+    <Compile Include="Frames\ExcelImport.cs" />
     <Compile Include="Frames\FrameBD.cs" />
     <Compile Include="Frames\Validaciones.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\ModelCarrera.cs" />
     <Compile Include="Models\ModelGrupo.cs" />
+    <Compile Include="Models\ModelPeriodo.cs" />
     <Compile Include="Models\ModelProfesor.cs" />
+    <Compile Include="Views\Alumnos\frmJustificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Alumnos\frmJustificaciones.Designer.cs">
+      <DependentUpon>frmJustificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Alumnos\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Alumnos\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Alumnos\FrmPanelAlumnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +123,12 @@
     <Compile Include="Views\Alumnos\PruebaValida.Designer.cs">
       <DependentUpon>PruebaValida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Grupos\frmDatosGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Grupos\frmDatosGrupo.Designer.cs">
+      <DependentUpon>frmDatosGrupo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Grupos\FrmGrupos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,12 +141,30 @@
     <Compile Include="Views\Grupos\FrmProfesoresPorGrupo.Designer.cs">
       <DependentUpon>FrmProfesoresPorGrupo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Main\frmDatosPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\frmDatosPeriodo.Designer.cs">
+      <DependentUpon>frmDatosPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\ImportarExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\ImportarExcel.Designer.cs">
+      <DependentUpon>ImportarExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Main\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Alumnos\frmJustificaciones.resx">
+      <DependentUpon>frmJustificaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Alumnos\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Alumnos\FrmPanelAlumnos.resx">
       <DependentUpon>FrmPanelAlumnos.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,11 +181,20 @@
     <EmbeddedResource Include="Views\Alumnos\PruebaValida.resx">
       <DependentUpon>PruebaValida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Grupos\frmDatosGrupo.resx">
+      <DependentUpon>frmDatosGrupo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Grupos\FrmGrupos.resx">
       <DependentUpon>FrmGrupos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Grupos\FrmProfesoresPorGrupo.resx">
       <DependentUpon>FrmProfesoresPorGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\frmDatosPeriodo.resx">
+      <DependentUpon>frmDatosPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\ImportarExcel.resx">
+      <DependentUpon>ImportarExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -166,6 +222,7 @@
   <ItemGroup>
     <Content Include="Resources\add-square-button.png" />
     <None Include="Resources\Fondo-4.jpg" />
+    <None Include="Resources\add.ico" />
     <Content Include="Resources\save-file-option.png" />
     <Content Include="Resources\trash.png" />
   </ItemGroup>
@@ -185,6 +242,44 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Access.Dao">
+      <Guid>{4AC9E1DA-5BAD-4AC7-86E3-24F4CDCECA28}</Guid>
+      <VersionMajor>12</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

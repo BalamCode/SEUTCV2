@@ -38,10 +38,21 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CmbTutor = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TxtPeriodo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.CmbCarreras = new System.Windows.Forms.ComboBox();
+            this.CmbGrupos = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -49,7 +60,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.TxtAlumno);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(11, 99);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1035, 50);
             this.groupBox1.TabIndex = 0;
@@ -120,20 +131,21 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 68);
+            this.groupBox3.Location = new System.Drawing.Point(12, 162);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1034, 430);
+            this.groupBox3.Size = new System.Drawing.Size(1034, 336);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 19);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 53);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(999, 401);
+            this.dataGridView1.Size = new System.Drawing.Size(999, 234);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -147,14 +159,116 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.Location = new System.Drawing.Point(197, 494);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(148, 42);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Justificacion";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CmbTutor);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.TxtPeriodo);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.CmbCarreras);
+            this.groupBox4.Controls.Add(this.CmbGrupos);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Location = new System.Drawing.Point(12, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1034, 81);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Datos académicos";
+            // 
+            // CmbTutor
+            // 
+            this.CmbTutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbTutor.FormattingEnabled = true;
+            this.CmbTutor.Location = new System.Drawing.Point(62, 53);
+            this.CmbTutor.Name = "CmbTutor";
+            this.CmbTutor.Size = new System.Drawing.Size(507, 21);
+            this.CmbTutor.TabIndex = 17;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Tutor";
+            // 
+            // TxtPeriodo
+            // 
+            this.TxtPeriodo.Location = new System.Drawing.Point(62, 20);
+            this.TxtPeriodo.Name = "TxtPeriodo";
+            this.TxtPeriodo.Size = new System.Drawing.Size(149, 20);
+            this.TxtPeriodo.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Periodo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(217, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Carreras";
+            // 
+            // CmbCarreras
+            // 
+            this.CmbCarreras.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbCarreras.FormattingEnabled = true;
+            this.CmbCarreras.Location = new System.Drawing.Point(284, 19);
+            this.CmbCarreras.Name = "CmbCarreras";
+            this.CmbCarreras.Size = new System.Drawing.Size(285, 21);
+            this.CmbCarreras.TabIndex = 12;
+            // 
+            // CmbGrupos
+            // 
+            this.CmbGrupos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbGrupos.FormattingEnabled = true;
+            this.CmbGrupos.Location = new System.Drawing.Point(628, 19);
+            this.CmbGrupos.Name = "CmbGrupos";
+            this.CmbGrupos.Size = new System.Drawing.Size(159, 21);
+            this.CmbGrupos.TabIndex = 11;
+            this.CmbGrupos.SelectionChangeCommitted += new System.EventHandler(this.CmbGrupos_SelectionChangeCommitted);
+            this.CmbGrupos.SelectedValueChanged += new System.EventHandler(this.CmbGrupos_SelectedValueChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(575, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Grupo";
+            // 
             // FrmPanelAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 548);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox1);
             this.Name = "FrmPanelAlumnos";
             this.Text = "Panel de Alumnos";
             this.Load += new System.EventHandler(this.FrmPanelAlumnos_Load);
@@ -164,6 +278,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -180,6 +296,16 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.ComboBox CmbTutor;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox TxtPeriodo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox CmbCarreras;
+        private System.Windows.Forms.ComboBox CmbGrupos;
+        private System.Windows.Forms.Label label5;
 
 
 

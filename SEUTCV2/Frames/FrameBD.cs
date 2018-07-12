@@ -25,6 +25,12 @@ namespace AccesoADatos
         public static string usuario;
         public static string password;
         public static string bd;
+        public static string rol;
+        public static string usuarioAcede;
+        public static string grupo;
+        public static string clavetutor;
+        public static string idCarrera;
+
 
 
       //public FrameBD(string servidor, uint puerto, string usuario, string password, string bd)
@@ -136,41 +142,88 @@ namespace AccesoADatos
           MySqlDataReader dt =  SQLReader(sqlaux);
           int cont = 0;
 
-          string[] respaux= new string[0];
+          string[] respaux = new string[1]; 
+          respaux[0] = "";
+          
           if (dt.HasRows)
           {
              
               while (dt.Read())
               {
                   Array.Resize(ref respaux, respaux.Length + 1);
-                  respaux[cont] = dt.GetString(0);
-                  cont++;
+
+                  if (dt.GetString(0) != null)
+                  {
+                      respaux[cont] = dt.GetString(0);
+                      cont++;
+                  }
                   
               }
           }
+          Array.Resize(ref respaux, respaux.Length-1);
           return respaux;
 
       }
 
-      
+      public static string[] ObtieneCampos(string tabla, string condicion, string campo)
+      {
+
+          string sqlaux = "SELECT " + campo +
+                         " FROM " + tabla +
+                         " WHERE " + condicion;
+
+          MySqlDataReader dt = SQLReader(sqlaux);
+          int cont = 0;
+
+          string[] respaux = new string[1];
+          respaux[0] = "";
+          
+          if (dt.HasRows)
+          {
+
+              while (dt.Read())
+              {
+
+                  for (int i = 0; i < dt.FieldCount; i++)
+                  {
+                      Array.Resize(ref respaux, respaux.Length + 1);
+                      string valor = dt.IsDBNull(i) ? String.Empty : dt.GetString(i);
+                      //if (Convert.ToString(dt.GetString(i)) !="")
+                          respaux[cont] = valor;
+                      //else
+                        //  respaux[cont] = "";
+                      cont++;
+                  }
+                  
+
+              }
+          }
+          Array.Resize(ref respaux, respaux.Length - 1);
+          return respaux;
+
+      }
 
 
-      
-      /*
-       *Public Function SQLREADER(ByVal sql) As MySqlDataReader
-        Try
-            conectar()
-            Dim comando As New MySqlCommand(sql, conex)
-            Dim Dr As MySqlDataReader
-            Dr = comando.ExecuteReader()
-            Return Dr
-            conex.Close()
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
 
-    End Function
-       */
+
+
+
+
+        /*
+         *Public Function SQLREADER(ByVal sql) As MySqlDataReader
+          Try
+              conectar()
+              Dim comando As New MySqlCommand(sql, conex)
+              Dim Dr As MySqlDataReader
+              Dr = comando.ExecuteReader()
+              Return Dr
+              conex.Close()
+          Catch ex As Exception
+              MsgBox(ex.Message)
+          End Try
+
+      End Function
+         */
 
       
 
