@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SEUTCV2.Frames;
 using SEUTCV2.Controllers;
+using SEUTCV2.Models;
  
 namespace SEUTCV2.Views
 {
@@ -35,11 +36,17 @@ namespace SEUTCV2.Views
 
         private void ImportarExcel_Load(object sender, EventArgs e)
         {
+            generaActa();
+            TxtPeriodo.Text = ModelPeriodo.periodo;
             
             CmbCarreras.DataSource = Carrera.GetCarreras();
             CmbCarreras.ValueMember = "idcarrera";
             CmbCarreras.DisplayMember = "Nombre";
-            TxtPeriodo.Text = SEUTCV2.Properties.Settings.Default.periodo;
+            
+        }
+        void generaActa() 
+        {
+            txtActa.Text = ModelPeriodo.periodo + "-" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
         }
 
         private void CmbCarreras_SelectionChangeCommitted(object sender, EventArgs e)
@@ -175,7 +182,8 @@ namespace SEUTCV2.Views
             txtArchivo.Clear();
             cmbAsignaturas.SelectedIndex = -1;
             cmbUnidades.SelectedIndex = -1;
-
+            generaActa();
+            label1.Text = "";
 
             }
 

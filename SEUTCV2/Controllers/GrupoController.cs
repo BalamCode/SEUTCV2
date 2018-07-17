@@ -27,7 +27,7 @@ namespace SEUTCV2.Controllers
                              " FROM Grupos WHERE periodo='" + Settings.Default.periodo + "'";
             
             return FrameBD.SQLSEL(sql); 
-            
+           
             
         }
 

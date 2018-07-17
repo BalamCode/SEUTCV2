@@ -299,6 +299,7 @@
             // 
             // txtActa
             // 
+            this.txtActa.Enabled = false;
             this.txtActa.Location = new System.Drawing.Point(137, 42);
             this.txtActa.Name = "txtActa";
             this.txtActa.Size = new System.Drawing.Size(125, 20);
