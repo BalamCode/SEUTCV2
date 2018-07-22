@@ -21,3 +21,4 @@ C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debu
 C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.pdb
 C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.csprojResolveAssemblyReference.cache
 C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Views.Alumnos.frmJustificaciones.resources
+C:\Users\Gilberto\documents\visual studio 2012\Projects\SEUTCV2\SEUTCV2\obj\Debug\SEUTCV2.Views.Main.frmConcentrado.resources

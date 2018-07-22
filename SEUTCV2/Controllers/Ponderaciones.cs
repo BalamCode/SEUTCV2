@@ -21,13 +21,13 @@ namespace SEUTCV2.Controllers
 
 
 
-        public void Store(string periodo,string materia,DataGridView dgv)
+        public void Store(string id_pondera,string periodo,string materia,DataGridView dgv)
         {
             string sql = "DELETE FROM ponderaciones WHERE idperiodo='" + periodo + "' AND idasignatura='" + materia + "';" ;
             for (int i = 0; i < dgv.RowCount;i++ )
             {
-                sql = sql +  string.Format("INSERT INTO ponderaciones(idasignatura,idperiodo,unidad,porcentaje,tipounidad)" +
-                                     " VALUES('{0}','{1}',{2},{3},'{4}');", idasignatura, idperiodo, dgv[0, i].Value.ToString(), dgv[1, i].Value.ToString(), dgv["Tipo", i].Value.ToString());
+                sql = sql +  string.Format("INSERT INTO ponderaciones(idasignatura,idperiodo,unidad,porcentaje,tipounidad,id_ponderacion)" +
+                                     " VALUES('{0}','{1}',{2},{3},'{4}','{5}');", idasignatura, idperiodo, dgv[0, i].Value.ToString(), dgv[1, i].Value.ToString(), dgv["Tipo", i].Value.ToString(),id_pondera);
             }
 
             FrameBD.SQLIDU(sql); 
@@ -36,14 +36,21 @@ namespace SEUTCV2.Controllers
 
         }
 
-        public void getUnidades(string claveAsig,string periodo,ComboBox cmb)
+        public void getUnidades(string claveAsig,string periodo,string grupo,ComboBox cmb)
         {
             // Obtenemos las unidades que aun no se entregan
-            string sql = "SELECT unidad" +
-                         " FROM ponderaciones" +
-                         " WHERE idasignatura='" + claveAsig + "' AND idperiodo='" + periodo + "' AND entregado=0";
+            string sql2 = string.Format("SELECT unidad" +
+" FROM ponderaciones as p" +
+" WHERE idasignatura='{0}' and idperiodo='{1}' And unidad" +
+" NOT IN(SELECT unidad" +
+" FROM actas_entrega as ac" +
+" WHERE clavePeriodo='{1}' and claveAsig='{0}' AND claveGrupo='{2}')", claveAsig, periodo, grupo);
 
-            cmb.DataSource = FrameBD.SQLCOMBO(sql);
+            ////string sql = "SELECT unidad" +
+            //             " FROM ponderaciones" +
+            //             " WHERE idasignatura='" + claveAsig + "' AND idperiodo='" + periodo  +  "' AND entregado=0";
+
+            cmb.DataSource = FrameBD.SQLCOMBO(sql2);
             cmb.DisplayMember = "unidad";
             cmb.ValueMember = "unidad";
 

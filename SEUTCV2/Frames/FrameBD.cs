@@ -30,6 +30,7 @@ namespace AccesoADatos
         public static string grupo;
         public static string clavetutor;
         public static string idCarrera;
+        public static string mensaje;
 
 
 
@@ -225,10 +226,16 @@ namespace AccesoADatos
       End Function
          */
 
-      
+      public static void mensajero(ToolStripStatusLabel lbl) 
+      {
+          lbl.Text = mensaje;
+
+      }
 
 
     }
+
+    
 
 
 

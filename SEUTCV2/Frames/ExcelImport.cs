@@ -19,7 +19,8 @@ namespace SEUTCV2.Frames
         string faltas = "";
         string desempeno = "";
 
-        public void Abrir(string archivo,string unidad, DataGridView dgv,System.Windows.Forms.Label men) 
+
+        public void Abrir(string archivo, string unidad, DataGridView dgv, ToolStripStatusLabel men) 
         {
             //abrimos el dialogo para poder obtener el nombre la ubicacion del archivo
             //ofdAbrirArchivo.ShowDialog();

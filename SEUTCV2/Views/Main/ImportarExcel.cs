@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SEUTCV2.Frames;
 using SEUTCV2.Controllers;
 using SEUTCV2.Models;
+using AccesoADatos;
  
 namespace SEUTCV2.Views
 {
@@ -36,12 +37,25 @@ namespace SEUTCV2.Views
 
         private void ImportarExcel_Load(object sender, EventArgs e)
         {
+            
+            
+            
             generaActa();
             TxtPeriodo.Text = ModelPeriodo.periodo;
             
-            CmbCarreras.DataSource = Carrera.GetCarreras();
-            CmbCarreras.ValueMember = "idcarrera";
-            CmbCarreras.DisplayMember = "Nombre";
+            Carrera.GetCarreras(CmbCarreras);
+            CmbCarreras.SelectedValue = ModelGrupo.idcarrera;
+
+            CmbGrupos.SelectedValue = ModelGrupo.clavegrupo;
+
+            if (FrameBD.rol == "Tutor Académico")
+            {
+                CmbCarreras.Enabled = false;
+                CmbGrupos.Enabled = false;
+            }
+
+            //CmbCarreras.ValueMember = "idcarrera";
+            //CmbCarreras.DisplayMember = "Nombre";
             
         }
         void generaActa() 
@@ -51,7 +65,7 @@ namespace SEUTCV2.Views
 
         private void CmbCarreras_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            oGrupo.GetGrupos(CmbGrupos, Convert.ToString(CmbCarreras.SelectedValue));
+           
             //CmbGrupos.SelectedIndex = 0;
 
 
@@ -59,18 +73,18 @@ namespace SEUTCV2.Views
 
         private void CmbGrupos_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            oGrupo.ObtenerMaterias(TxtPeriodo.Text, CmbGrupos.SelectedValue.ToString(), cmbAsignaturas);
-           // FoliarActa();
-            cmbAsignaturas.SelectedIndex = 0;
-
-
         }
 
         private void CmbGrupos_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
 
+        void filtroAsignaturas() 
+        {
+            if (CmbGrupos.Items.Count>1)
+                oGrupo.ObtenerMaterias(TxtPeriodo.Text, CmbGrupos.SelectedValue.ToString(), cmbAsignaturas);
+        }
         
 
         private void cmbUnidades_SelectionChangeCommitted(object sender, EventArgs e)
@@ -145,21 +159,29 @@ namespace SEUTCV2.Views
 
         private void cmbAsignaturas_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
-            oPonder.getUnidades(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text, cmbUnidades);
-            cmbUnidades.SelectedIndex = 0;
+            //if (cmbAsignaturas.SelectedIndex >= 0)
+            //{
+            //    oPonder.getUnidades(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text, cmbUnidades);
+            //    cmbUnidades.SelectedIndex = 0;
+            //}
             
 
         }
         private void cmbAsignaturas_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            oPonder.getUnidades(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text, cmbUnidades);
-           
+            //if (cmbAsignaturas.SelectedIndex >= 0)
+            //{
+            //    oPonder.getUnidades(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text, cmbUnidades);
+            //}
 
         }
 
         private void btnSubir_Click(object sender, EventArgs e)
+        
         {
-
+            
+            if (CmbCarreras.Items.Count> 0 && CmbGrupos.Items.Count>0 && cmbAsignaturas.Items.Count>0 && cmbUnidades.Items.Count>0 && txtUnidad.Text != "" && txtPor.Text !="")
+            {
             if(MessageBox.Show("Está seguro de importar las calificaciones","Precaución",MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation)==DialogResult.Yes)
             {
             ActasEntregaController oActa = new ActasEntregaController();
@@ -173,6 +195,7 @@ namespace SEUTCV2.Views
             oActa.tipo_unidad = txtUnidad.Text;
             oActa.unidad = Convert.ToUInt32(cmbUnidades.SelectedValue.ToString());
             oActa.claveGrupo = CmbGrupos.SelectedValue.ToString();
+            //FrameBD.mensajero("lblAlert");
           
             
             oActa.Store();
@@ -180,11 +203,12 @@ namespace SEUTCV2.Views
             oActa.Store_DetalleActas(dgvCalif);
             dgvCalif.Columns.Clear();
             txtArchivo.Clear();
-            cmbAsignaturas.SelectedIndex = -1;
-            cmbUnidades.SelectedIndex = -1;
+            //cmbAsignaturas.SelectedIndex = -1;
+            //cmbUnidades.SelectedIndex = -1;
             generaActa();
             label1.Text = "";
 
+            }
             }
 
 
@@ -215,8 +239,53 @@ namespace SEUTCV2.Views
            // oExcel.ExportarExcel();
         }
 
-      
-        
+        private void CmbCarreras_SelectedValueChanged(object sender, EventArgs e)
+        {
+            filtrarGrupos();
+        }
+
+        private void CmbGrupos_SelectedValueChanged(object sender, EventArgs e)
+        {
+           // oGrupo.ObtenerMaterias(CmbCarreras.SelectedValue.ToString(), CmbGrupos.SelectedValue.ToString(), cmbAsignaturas);
+            filtroAsignaturas(); 
+        }
+
+        private void cmbAsignaturas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            filtroUnidades();
+        }
+
+        void filtroUnidades() 
+        {
+            if (cmbAsignaturas.Items.Count > 0)
+            {
+                oPonder.getUnidades(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text,CmbGrupos.SelectedValue.ToString(), cmbUnidades);
+                //cmbUnidades.SelectedIndex = 0;
+            }
+        }
+
+        private void cmbUnidades_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (CmbCarreras.Items.Count > 0 && CmbGrupos.Items.Count > 0 && cmbAsignaturas.Items.Count>0 && cmbUnidades.Items.Count>0)
+            {
+                string[] datos = oPonder.GetDatosUnidad(cmbAsignaturas.SelectedValue.ToString(), TxtPeriodo.Text, cmbUnidades.SelectedValue.ToString());
+                txtPor.Text = datos[0];
+                txtUnidad.Text = datos[1];
+                //txtFechaPlan.Text = datos[2];
+                txtEntregado.Text = datos[4];
+            }
+        }
+
+
+        void filtrarGrupos() 
+        {
+            if (CmbCarreras.Items.Count > 0)
+            {
+                oGrupo.GetGrupos(CmbGrupos, Convert.ToString(CmbCarreras.SelectedValue));
+                //CmbGrupos.SelectedIndex = 1;
+            }
+
+        }
 
 
     }

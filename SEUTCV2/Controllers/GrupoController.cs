@@ -161,6 +161,24 @@ namespace SEUTCV2.Controllers
                     
         }
 
+        public void ObtenerMateriasXGrupo(string grupo, DataGridView dtg)
+
+        {
+            string idcarrera = grupo.Substring(0, 3);
+            string idgrado = grupo.Substring(4, 1);
+
+            
+            string sqldatos = "Select ClaveAsig as Clave,Nombre as Asignatura,GetUnidadesEntregadasPorMateria('2018B','" + grupo + "',ClaveAsig) as Entregadas," + 
+                              " GetUnidadesAcumuladaEntregadasPorMateria('2018B','" + grupo + "',ClaveAsig) as 'Avance'" +
+                              " FROM Asignaturas" +
+                             " WHERE idCarrera='" + idcarrera + "' AND Cuatrimestre=" + idgrado;
+            dtg.DataSource = FrameBD.SQLSEL(sqldatos);
+            dtg.DataMember = "datos";
+
+            dtg.Columns["Asignatura"].Width = 290;
+
+        }
+
         public void ObtenerMaterias(string periodo, string grupo, ComboBox dtg)
         {
             string sqldatos = "Select Asig.ClaveAsig as Clave,Asig.Nombre as Asignatura" +
@@ -251,9 +269,61 @@ namespace SEUTCV2.Controllers
 
         }
 
+
+
+        public void resumen(string claveasig,string asig,string periodo, string grupo,string unidad, DataGridView dgv) 
+        {
+            dgv.Columns.Clear();
+            string unidades="";
+            //string pond ="SUM(";
+            for (int i = 0; i < Convert.ToInt32(unidad); i++)
+            {
+
+
+                if ((i + 1) < Convert.ToInt32(unidad))
+                {
+                    unidades = unidades + String.Format("getTotalUnidadxAsig(alumnos.Matricula,{4},'{2}','{3}','{0}') as '{1}" + " U" + (i + 1) + "',", claveasig, asig, periodo, grupo, i + 1);
+                    //pond = pond + String.Format("ROUND(getTotalUnidadxAsig(alumnos.Matricula,{4},'{2}','{3}','{0}'),1)", claveasig, asig, periodo, grupo, i + 1) + "+";
+                }
+                else
+                {
+                    unidades = unidades + String.Format("getTotalUnidadxAsig(alumnos.Matricula,{4},'{2}','{3}','{0}') as '{1}" + " U" + (i + 1) + "'", claveasig, asig, periodo, grupo, i + 1);
+                    //pond = pond + String.Format("ROUND(getTotalUnidadxAsig(alumnos.Matricula,{4},'{2}','{3}','{0}'),1)", claveasig, asig, periodo, grupo, i + 1) + ") as Acumulado";
+                }
+
+            }
+
+            string acumulado = "";
+            acumulado = String.Format(",Round(getAcumuladoPorAlumno('{0}','{1}','{2}',alumnos.Matricula),2) as Acumulado," +
+                                    " Round(getPromedioPorAlumno('{0}','{1}','{2}',alumnos.Matricula),1) as Promedio", periodo, grupo, claveasig);
+
+            string sql = "SET NAMES 'utf8';";
+                
+                sql = sql + string.Format("SELECT alumnos.Matricula,Concat(alumnos.ApellidoP,' ',alumnos.ApellidoM,' ',alumnos.Nombre)as Alumno," +
+            unidades + 
+            acumulado +
+ 
+            " FROM alumnos" + 
+            " WHERE alumnos.GrupoActual='{3}'",claveasig,asig,periodo,grupo,unidad);
+
+            
+            
+            dgv.DataSource = FrameBD.SQLSEL(sql);
+            dgv.DataMember = "datos";
+
+            dgv.Columns["Alumno"].Width = 250;
+            dgv.ColumnHeadersHeight = 100;
+            //dgv.Columns["Acumulado"].DisplayIndex = dgv.Columns.Count-1;
+            
+            //dgv.Columns.Add("Promedio","Promedio");
+
+            
+            
+
+
+
         
-
-
+        }
 
       
        

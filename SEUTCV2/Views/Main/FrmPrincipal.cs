@@ -77,6 +77,13 @@ namespace SEUTCV2.Views.Main
             oGrupo.Show();
         }
 
+        private void mnuConcentrado_Click(object sender, EventArgs e)
+        {
+            frmConcentrado oCon = new frmConcentrado();
+            oCon.MdiParent = this;
+            oCon.Show();
+        }
+
        
     }
 }

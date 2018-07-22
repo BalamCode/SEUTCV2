@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvCalif = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.CmbCarreras = new System.Windows.Forms.ComboBox();
             this.CmbGrupos = new System.Windows.Forms.ComboBox();
             this.gpbUnidad = new System.Windows.Forms.GroupBox();
@@ -63,10 +62,13 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnSubir = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.label1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalif)).BeginInit();
             this.gpbUnidad.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCalif
@@ -74,20 +76,11 @@
             this.dgvCalif.AllowUserToAddRows = false;
             this.dgvCalif.AllowUserToDeleteRows = false;
             this.dgvCalif.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCalif.Location = new System.Drawing.Point(12, 240);
+            this.dgvCalif.Location = new System.Drawing.Point(12, 307);
             this.dgvCalif.Name = "dgvCalif";
             this.dgvCalif.ReadOnly = true;
-            this.dgvCalif.Size = new System.Drawing.Size(712, 339);
+            this.dgvCalif.Size = new System.Drawing.Size(712, 272);
             this.dgvCalif.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(14, 582);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 24);
-            this.label1.TabIndex = 4;
             // 
             // CmbCarreras
             // 
@@ -97,8 +90,7 @@
             this.CmbCarreras.Name = "CmbCarreras";
             this.CmbCarreras.Size = new System.Drawing.Size(298, 21);
             this.CmbCarreras.TabIndex = 9;
-            this.CmbCarreras.SelectedIndexChanged += new System.EventHandler(this.CmbCarreras_SelectedIndexChanged);
-            this.CmbCarreras.SelectionChangeCommitted += new System.EventHandler(this.CmbCarreras_SelectionChangeCommitted);
+            this.CmbCarreras.SelectedValueChanged += new System.EventHandler(this.CmbCarreras_SelectedValueChanged);
             // 
             // CmbGrupos
             // 
@@ -108,8 +100,7 @@
             this.CmbGrupos.Name = "CmbGrupos";
             this.CmbGrupos.Size = new System.Drawing.Size(159, 21);
             this.CmbGrupos.TabIndex = 8;
-            this.CmbGrupos.SelectedIndexChanged += new System.EventHandler(this.CmbGrupos_SelectedIndexChanged);
-            this.CmbGrupos.SelectionChangeCommitted += new System.EventHandler(this.CmbGrupos_SelectionChangeCommitted);
+            this.CmbGrupos.SelectedValueChanged += new System.EventHandler(this.CmbGrupos_SelectedValueChanged);
             // 
             // gpbUnidad
             // 
@@ -124,22 +115,22 @@
             this.gpbUnidad.Controls.Add(this.label2);
             this.gpbUnidad.Location = new System.Drawing.Point(12, 189);
             this.gpbUnidad.Name = "gpbUnidad";
-            this.gpbUnidad.Size = new System.Drawing.Size(712, 42);
+            this.gpbUnidad.Size = new System.Drawing.Size(712, 93);
             this.gpbUnidad.TabIndex = 13;
             this.gpbUnidad.TabStop = false;
             this.gpbUnidad.Text = "Datos académicos";
             // 
             // txtArchivo
             // 
-            this.txtArchivo.Location = new System.Drawing.Point(177, 40);
+            this.txtArchivo.Location = new System.Drawing.Point(137, 19);
             this.txtArchivo.Name = "txtArchivo";
-            this.txtArchivo.Size = new System.Drawing.Size(364, 20);
+            this.txtArchivo.ReadOnly = true;
+            this.txtArchivo.Size = new System.Drawing.Size(551, 20);
             this.txtArchivo.TabIndex = 16;
-            this.txtArchivo.Visible = false;
             // 
             // btnLocaliza
             // 
-            this.btnLocaliza.Location = new System.Drawing.Point(442, 11);
+            this.btnLocaliza.Location = new System.Drawing.Point(24, 19);
             this.btnLocaliza.Name = "btnLocaliza";
             this.btnLocaliza.Size = new System.Drawing.Size(99, 23);
             this.btnLocaliza.TabIndex = 15;
@@ -150,7 +141,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 35);
+            this.label6.Location = new System.Drawing.Point(586, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 11;
@@ -159,9 +150,9 @@
             // 
             // btnAbrir
             // 
-            this.btnAbrir.Location = new System.Drawing.Point(571, 9);
+            this.btnAbrir.Location = new System.Drawing.Point(24, 48);
             this.btnAbrir.Name = "btnAbrir";
-            this.btnAbrir.Size = new System.Drawing.Size(99, 25);
+            this.btnAbrir.Size = new System.Drawing.Size(161, 25);
             this.btnAbrir.TabIndex = 10;
             this.btnAbrir.Text = "Importar";
             this.btnAbrir.UseVisualStyleBackColor = true;
@@ -169,7 +160,7 @@
             // 
             // txtEntregado
             // 
-            this.txtEntregado.Location = new System.Drawing.Point(97, 32);
+            this.txtEntregado.Location = new System.Drawing.Point(648, 47);
             this.txtEntregado.Name = "txtEntregado";
             this.txtEntregado.Size = new System.Drawing.Size(40, 20);
             this.txtEntregado.TabIndex = 9;
@@ -177,7 +168,7 @@
             // 
             // txtUnidad
             // 
-            this.txtUnidad.Location = new System.Drawing.Point(304, 12);
+            this.txtUnidad.Location = new System.Drawing.Point(324, 50);
             this.txtUnidad.Name = "txtUnidad";
             this.txtUnidad.Size = new System.Drawing.Size(97, 20);
             this.txtUnidad.TabIndex = 3;
@@ -185,7 +176,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(216, 16);
+            this.label3.Location = new System.Drawing.Point(214, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 2;
@@ -193,15 +184,15 @@
             // 
             // txtPor
             // 
-            this.txtPor.Location = new System.Drawing.Point(97, 12);
+            this.txtPor.Location = new System.Drawing.Point(500, 48);
             this.txtPor.Name = "txtPor";
-            this.txtPor.Size = new System.Drawing.Size(100, 20);
+            this.txtPor.Size = new System.Drawing.Size(79, 20);
             this.txtPor.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 16);
+            this.label2.Location = new System.Drawing.Point(436, 53);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 0;
@@ -340,6 +331,7 @@
             this.cmbUnidades.Size = new System.Drawing.Size(159, 21);
             this.cmbUnidades.TabIndex = 15;
             this.cmbUnidades.SelectionChangeCommitted += new System.EventHandler(this.cmbUnidades_SelectionChangeCommitted);
+            this.cmbUnidades.SelectedValueChanged += new System.EventHandler(this.cmbUnidades_SelectedValueChanged);
             // 
             // label13
             // 
@@ -358,8 +350,7 @@
             this.cmbAsignaturas.Name = "cmbAsignaturas";
             this.cmbAsignaturas.Size = new System.Drawing.Size(298, 21);
             this.cmbAsignaturas.TabIndex = 13;
-            this.cmbAsignaturas.SelectedIndexChanged += new System.EventHandler(this.cmbAsignaturas_SelectedIndexChanged);
-            this.cmbAsignaturas.SelectionChangeCommitted += new System.EventHandler(this.cmbAsignaturas_SelectionChangeCommitted_1);
+            this.cmbAsignaturas.SelectedValueChanged += new System.EventHandler(this.cmbAsignaturas_SelectedValueChanged);
             // 
             // label12
             // 
@@ -390,7 +381,7 @@
             // 
             // btnSubir
             // 
-            this.btnSubir.Location = new System.Drawing.Point(12, 598);
+            this.btnSubir.Location = new System.Drawing.Point(12, 585);
             this.btnSubir.Name = "btnSubir";
             this.btnSubir.Size = new System.Drawing.Size(99, 25);
             this.btnSubir.TabIndex = 18;
@@ -400,25 +391,40 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(149, 598);
+            this.button1.Location = new System.Drawing.Point(122, 585);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(99, 25);
             this.button1.TabIndex = 19;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.label1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 613);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(747, 22);
+            this.statusStrip1.TabIndex = 20;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // label1
+            // 
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 17);
             // 
             // ImportarExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(747, 635);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnSubir);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gpbUnidad);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvCalif);
             this.Name = "ImportarExcel";
             this.Text = "ImportarExcel";
@@ -430,6 +436,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -438,7 +446,6 @@
         #endregion
 
         internal System.Windows.Forms.DataGridView dgvCalif;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CmbCarreras;
         private System.Windows.Forms.ComboBox CmbGrupos;
         private System.Windows.Forms.GroupBox gpbUnidad;
@@ -472,5 +479,7 @@
         private System.Windows.Forms.Button btnSubir;
         private System.Windows.Forms.DateTimePicker dtpFechaPlan;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel label1;
     }
 }

@@ -20,6 +20,7 @@ namespace SEUTCV2
             //Application.Run(new Views.Alumnos.PruebaValida());
             //Application.Run(new Views.ImportarExcel());
             Application.Run(new Views.Alumnos.frmLogin());
+            //Application.Run(new Views.Main.frmConcentrado());
         }
     }
 }

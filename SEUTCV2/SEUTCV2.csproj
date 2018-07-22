@@ -141,6 +141,12 @@
     <Compile Include="Views\Grupos\FrmProfesoresPorGrupo.Designer.cs">
       <DependentUpon>FrmProfesoresPorGrupo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Main\frmConcetradoPonderaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Main\frmConcetradoPonderaciones.Designer.cs">
+      <DependentUpon>frmConcetradoPonderaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main\frmDatosPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Grupos\FrmProfesoresPorGrupo.resx">
       <DependentUpon>FrmProfesoresPorGrupo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Main\frmConcetradoPonderaciones.resx">
+      <DependentUpon>frmConcetradoPonderaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Main\frmDatosPeriodo.resx">
       <DependentUpon>frmDatosPeriodo.cs</DependentUpon>

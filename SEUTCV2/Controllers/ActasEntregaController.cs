@@ -51,9 +51,9 @@ namespace SEUTCV2.Controllers
                 string falta = dgv[4,i].Value.ToString();
                 string niv = dgv[3,i].Value.ToString();
                 double tot = Convert.ToDouble(cal) * (ponderacion/100);
-
+                
                 detalle = detalle + String.Format("INSERT INTO detalles_entrega(acta,clavePeriodo,claveGrupo,claveAsig,unidad,matricula,calificacion,ponderacion,nivel,total_unidad)" +
-                                   " VALUES('{0}','{1}','{2}','{3}',{4},'{5}',{6},{7},'{8}',{9});", acta, clavePeriodo, claveGrupo, claveAsig, unidad, mat, cal, ponderacion, niv, tot.ToString("0.0"));
+                                   " VALUES('{0}','{1}','{2}','{3}',{4},'{5}',{6},{7},'{8}',{9});", acta, clavePeriodo, claveGrupo, claveAsig, unidad, mat, cal, ponderacion, niv, tot.ToString("0.00"));
 
             }
             FrameBD.SQLIDU(detalle);

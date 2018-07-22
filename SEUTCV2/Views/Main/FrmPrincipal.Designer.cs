@@ -37,18 +37,20 @@
             this.mnuImport = new System.Windows.Forms.ToolStripMenuItem();
             this.asignarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alumnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuDatosGrupo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPanelAlumnos = new System.Windows.Forms.ToolStripMenuItem();
+            this.periodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuInfoPeriodo = new System.Windows.Forms.ToolStripMenuItem();
             this.serviciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.justificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadisticasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblPerfil = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
-            this.justificacionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eventosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuDatosGrupo = new System.Windows.Forms.ToolStripMenuItem();
-            this.periodoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInfoPeriodo = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblAlert = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuConcentrado = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -130,12 +132,34 @@
             this.alumnosToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.alumnosToolStripMenuItem.Text = "Grupo tutorado";
             // 
+            // mnuDatosGrupo
+            // 
+            this.mnuDatosGrupo.Name = "mnuDatosGrupo";
+            this.mnuDatosGrupo.Size = new System.Drawing.Size(168, 22);
+            this.mnuDatosGrupo.Text = "Informacion";
+            this.mnuDatosGrupo.Click += new System.EventHandler(this.mnuDatosGrupo_Click);
+            // 
             // mnuPanelAlumnos
             // 
             this.mnuPanelAlumnos.Name = "mnuPanelAlumnos";
             this.mnuPanelAlumnos.Size = new System.Drawing.Size(168, 22);
             this.mnuPanelAlumnos.Text = "Panel de alumnos";
             this.mnuPanelAlumnos.Click += new System.EventHandler(this.mnuPanelAlumnos_Click);
+            // 
+            // periodoToolStripMenuItem
+            // 
+            this.periodoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuInfoPeriodo});
+            this.periodoToolStripMenuItem.Name = "periodoToolStripMenuItem";
+            this.periodoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.periodoToolStripMenuItem.Text = "Periodo";
+            // 
+            // mnuInfoPeriodo
+            // 
+            this.mnuInfoPeriodo.Name = "mnuInfoPeriodo";
+            this.mnuInfoPeriodo.Size = new System.Drawing.Size(139, 22);
+            this.mnuInfoPeriodo.Text = "Información";
+            this.mnuInfoPeriodo.Click += new System.EventHandler(this.mnuInfoPeriodo_Click);
             // 
             // serviciosToolStripMenuItem
             // 
@@ -146,8 +170,22 @@
             this.serviciosToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.serviciosToolStripMenuItem.Text = "Servicios";
             // 
+            // justificacionesToolStripMenuItem
+            // 
+            this.justificacionesToolStripMenuItem.Name = "justificacionesToolStripMenuItem";
+            this.justificacionesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.justificacionesToolStripMenuItem.Text = "Justificaciones";
+            // 
+            // eventosToolStripMenuItem
+            // 
+            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
+            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.eventosToolStripMenuItem.Text = "Eventos";
+            // 
             // estadisticasToolStripMenuItem
             // 
+            this.estadisticasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuConcentrado});
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadisticas";
@@ -157,7 +195,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblPerfil,
             this.toolStripStatusLabel1,
-            this.lblUsuario});
+            this.lblUsuario,
+            this.lblAlert});
             this.statusStrip1.Location = new System.Drawing.Point(0, 435);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(902, 22);
@@ -183,39 +222,17 @@
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(0, 17);
             // 
-            // justificacionesToolStripMenuItem
+            // lblAlert
             // 
-            this.justificacionesToolStripMenuItem.Name = "justificacionesToolStripMenuItem";
-            this.justificacionesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.justificacionesToolStripMenuItem.Text = "Justificaciones";
+            this.lblAlert.Name = "lblAlert";
+            this.lblAlert.Size = new System.Drawing.Size(0, 17);
             // 
-            // eventosToolStripMenuItem
+            // mnuConcentrado
             // 
-            this.eventosToolStripMenuItem.Name = "eventosToolStripMenuItem";
-            this.eventosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.eventosToolStripMenuItem.Text = "Eventos";
-            // 
-            // mnuDatosGrupo
-            // 
-            this.mnuDatosGrupo.Name = "mnuDatosGrupo";
-            this.mnuDatosGrupo.Size = new System.Drawing.Size(168, 22);
-            this.mnuDatosGrupo.Text = "Informacion";
-            this.mnuDatosGrupo.Click += new System.EventHandler(this.mnuDatosGrupo_Click);
-            // 
-            // periodoToolStripMenuItem
-            // 
-            this.periodoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuInfoPeriodo});
-            this.periodoToolStripMenuItem.Name = "periodoToolStripMenuItem";
-            this.periodoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.periodoToolStripMenuItem.Text = "Periodo";
-            // 
-            // mnuInfoPeriodo
-            // 
-            this.mnuInfoPeriodo.Name = "mnuInfoPeriodo";
-            this.mnuInfoPeriodo.Size = new System.Drawing.Size(152, 22);
-            this.mnuInfoPeriodo.Text = "Información";
-            this.mnuInfoPeriodo.Click += new System.EventHandler(this.mnuInfoPeriodo_Click);
+            this.mnuConcentrado.Name = "mnuConcentrado";
+            this.mnuConcentrado.Size = new System.Drawing.Size(152, 22);
+            this.mnuConcentrado.Text = "Concentrado";
+            this.mnuConcentrado.Click += new System.EventHandler(this.mnuConcentrado_Click);
             // 
             // FrmPrincipal
             // 
@@ -263,5 +280,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuDatosGrupo;
         private System.Windows.Forms.ToolStripMenuItem periodoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuInfoPeriodo;
+        private System.Windows.Forms.ToolStripStatusLabel lblAlert;
+        private System.Windows.Forms.ToolStripMenuItem mnuConcentrado;
     }
 }

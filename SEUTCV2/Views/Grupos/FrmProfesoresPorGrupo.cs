@@ -254,10 +254,10 @@ namespace SEUTCV2.Views.Grupos
 
         private void btnPonderacion_Click(object sender, EventArgs e)
         {
-            
+            string id_ponderacion = ModelPeriodo.periodo + "-Pond" + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
             oPond.idperiodo = TxtPeriodo.Text;
             oPond.idasignatura = lblAsignatura.Tag.ToString();
-            oPond.Store(TxtPeriodo.Text, lblAsignatura.Tag.ToString(), dgvPondera);     
+            oPond.Store(id_ponderacion,TxtPeriodo.Text, lblAsignatura.Tag.ToString(), dgvPondera);     
 
         }
 
