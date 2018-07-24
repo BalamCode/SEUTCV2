@@ -21,7 +21,7 @@ namespace SEUTCV2.Views.Main
 
         private void frmConcetradoPonderaciones_Load(object sender, EventArgs e)
         {
-            oGrup.ObtenerMateriasXGrupo("TTS-3A", dataGridView1);
+            oGrup.ObtenerMateriasXGrupo(Models.ModelGrupo.clavegrupo, dataGridView1);
             
         }
 
@@ -37,7 +37,7 @@ namespace SEUTCV2.Views.Main
             string unidades = dataGridView1[2, dataGridView1.CurrentCellAddress.Y].Value.ToString();
 
             if (unidades !="0")
-            oGrup.resumen(clave, asig, "2018B", "TTS-3A", unidades, dataGridView2);
+            oGrup.resumen(clave, asig, Models.ModelPeriodo.periodo, Models.ModelGrupo.clavegrupo, unidades, dataGridView2);
 
 
             //dataGridView2.Columns.Add("Acumulado", "Acumulado");

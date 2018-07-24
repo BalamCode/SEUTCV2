@@ -16,9 +16,12 @@ namespace SEUTCV2.Controllers
             // por ahora se filtrará solop or grupo y por carrera. Es ncesario agregar en el WHERE el periodo
             // Si no se hiciera nos aparecerías los alumnos que alguna vex pertenecieron al mismo grupo a traves del tiempo 10/07/18
             string sql = "SELECT Matricula,Concat(apellidop,' ',apellidom,' ',nombre) as Alumno" +
+                        " ,getReprobadas(Matricula,NULL,'" + Models.ModelPeriodo.periodo + "','" + Models.ModelGrupo.clavegrupo + "') as Reprobadas" + 
                         " FROM alumnos" +
                         " WHERE grupoactual='" + grupo + "' AND idCarrera='" + carrera + "'" + 
-                        " AND apellidop LIKE'" + partial + "%'";
+                        " AND bajadefinitiva=0"+ 
+                        " AND apellidop LIKE'" + partial + "%'" + 
+                        " ORDER BY Alumno ASC";
             dgv.DataSource = FrameBD.SQLSEL(sql);
             dgv.DataMember = "datos";
             dgv.Columns[1].Width = 250;

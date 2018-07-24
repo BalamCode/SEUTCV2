@@ -106,6 +106,7 @@ namespace SEUTCV2
         void filtroAlumnos() 
         {
             oAlumno.FiltroAlumnos(dataGridView1,CmbCarreras.SelectedValue.ToString(),CmbGrupos.SelectedValue.ToString(),"",TxtAlumno.Text);
+            sumRepro();
 
         }
 
@@ -122,6 +123,31 @@ namespace SEUTCV2
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            string sql = string.Format("CALL sp_reprobadas('{0}','{1}','{2}')",ModelPeriodo.periodo,ModelGrupo.clavegrupo,dataGridView1[0,dataGridView1.CurrentCellAddress.Y].Value.ToString());
+            dgvDetalle.DataSource = FrameBD.SQLSEL(sql);
+            dgvDetalle.DataMember = "datos";
+            dgvDetalle.Columns[1].Width = 200;
+        }
+
+        void sumRepro() 
+        {
+            int sum = 0;
+
+            for (int i = 0; i < dataGridView1.RowCount; i++)
+            {
+                sum = sum + Convert.ToInt32(dataGridView1["Reprobadas", i].Value.ToString());
+            }
+            lblReprobadas.Text = "UNIDADES REPROBADAS : " + sum.ToString();
 
         }
     }

@@ -48,11 +48,14 @@
             this.CmbCarreras = new System.Windows.Forms.ComboBox();
             this.CmbGrupos = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.dgvDetalle = new System.Windows.Forms.DataGridView();
+            this.lblReprobadas = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -130,6 +133,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblReprobadas);
+            this.groupBox3.Controls.Add(this.dgvDetalle);
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Location = new System.Drawing.Point(12, 162);
             this.groupBox3.Name = "groupBox3";
@@ -145,8 +150,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(18, 53);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(999, 234);
+            this.dataGridView1.Size = new System.Drawing.Size(610, 234);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
             // 
             // button1
             // 
@@ -259,6 +266,26 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Grupo";
             // 
+            // dgvDetalle
+            // 
+            this.dgvDetalle.AllowUserToAddRows = false;
+            this.dgvDetalle.AllowUserToDeleteRows = false;
+            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.Location = new System.Drawing.Point(629, 53);
+            this.dgvDetalle.Name = "dgvDetalle";
+            this.dgvDetalle.RowHeadersVisible = false;
+            this.dgvDetalle.Size = new System.Drawing.Size(399, 234);
+            this.dgvDetalle.TabIndex = 1;
+            // 
+            // lblReprobadas
+            // 
+            this.lblReprobadas.AutoSize = true;
+            this.lblReprobadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblReprobadas.Location = new System.Drawing.Point(18, 294);
+            this.lblReprobadas.Name = "lblReprobadas";
+            this.lblReprobadas.Size = new System.Drawing.Size(0, 24);
+            this.lblReprobadas.TabIndex = 2;
+            // 
             // FrmPanelAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,9 +304,11 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,6 +335,8 @@
         private System.Windows.Forms.ComboBox CmbCarreras;
         private System.Windows.Forms.ComboBox CmbGrupos;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView dgvDetalle;
+        private System.Windows.Forms.Label lblReprobadas;
 
 
 

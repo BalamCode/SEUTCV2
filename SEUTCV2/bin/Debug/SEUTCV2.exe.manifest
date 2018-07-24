@@ -47,14 +47,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SEUTCV2.exe" size="203776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SEUTCV2.exe" size="204800">
       <assemblyIdentity name="SEUTCV2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nwcZPnFDTx1DJyEu7+dfqq3LzxvdYvdY3opKLw4TImE=</dsig:DigestValue>
+        <dsig:DigestValue>UmguMzM/uPIPJ3CsEF1RCOx/hjlHUY2j5XRbjynDIQA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

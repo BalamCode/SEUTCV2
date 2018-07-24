@@ -67,7 +67,6 @@
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmConcentrado";
-            this.Text = "frmConcetradoPonderaciones";
             this.Load += new System.EventHandler(this.frmConcetradoPonderaciones_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
